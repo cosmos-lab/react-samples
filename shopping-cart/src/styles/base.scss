@@ -1,0 +1,112 @@
+* {
+  border: none;
+  outline: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cccccc;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+html, body { height: 100% }
+
+body {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 0.94em;
+  overflow-x: hidden;
+  color: #333;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p,
+textarea {
+  padding: 0;
+  margin: 0;
+  line-height: inherit;
+  line-height: 170%;
+}
+
+input,
+textarea,
+button {
+  line-height: 125%;
+  font: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.heading {
+  font-size: 130%;
+  line-height: 100%;
+}
+
+.heading1 {
+  font-size: 110%;
+  line-height: 100%;
+}
+
+.small {
+  font-size: 85%;
+  line-height: 100%;
+}
+
+.wmax {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blur {
+  filter: opacity(75%) blur(2px) grayscale(75%) !important;
+  -webkit-filter: opacity(75%) blur(2px) grayscale(75%) !important;
+}
+
+.b {
+  font-weight: 700;
+}
+
+.bm {
+  font-weight: 500;
+}
+
+:root {
+  --animate-duration: 0.5s;
+  --animate-delay: 0;
+  --animate-repeat: 0;
+}
+
+.animate__fastest {
+  --animate-duration: 0.1s;
+  --animate-delay: 0;
+  --animate-repeat: 0;
+}
