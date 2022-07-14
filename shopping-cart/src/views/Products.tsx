@@ -1,7 +1,7 @@
 import css from "classnames";
 
 import { connect } from "react-redux";
-import { Component, ReactNode, useEffect } from "react";
+import { Component, ReactNode } from "react";
 import { fetchItems } from "../services/Product";
 import Button from "../components/Form/Button";
 
@@ -24,7 +24,7 @@ class Products extends Component<any> {
             <div key={`movie-${movie.id}`} className="bb borderSecondary pv3 flex items-center">
               <div className="b heading flex-auto">{movie.name}</div>
               <div className="textSecondary pr4">{movie.year}</div>
-              <Button className="bgButtonPrimary pv1">+</Button>
+              <Button className="bgButtonSecondary pv1">+</Button>
             </div>
           );
         })}
