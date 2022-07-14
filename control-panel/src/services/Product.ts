@@ -1,9 +1,13 @@
-import { setProductList } from "../state/Product";
+import { setProductList, setProductLoading } from "../state/Product";
 
 export function fetchItems() {
   return async (dispatch: any) => {
+    dispatch(setProductLoading(true));
+    
     const response = await fetch("/api/movies");
     const json = await response.json();
+
+    dispatch(setProductLoading(false));
     dispatch(setProductList(json));
   };
 }

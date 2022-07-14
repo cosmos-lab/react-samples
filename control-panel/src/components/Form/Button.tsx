@@ -28,6 +28,9 @@ function Button(props: Props) {
         {isLoading && (
           <div
             className="absolute left0 right0 top0 bottom0 z0 flex flex-column"
+            style={{
+              background:'inherit'
+            }}
           >
             <Spinner className="mauto" />
           </div>

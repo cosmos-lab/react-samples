@@ -1,6 +1,7 @@
 import css from "classnames";
 
 type Props = {
+  id?:string;
   value: any;
   type?: string;
   inline?: boolean;
@@ -16,6 +17,7 @@ type Props = {
 
 function TextInput(props: Props) {
   const {
+    id,
     type,
     value,
     inline,
@@ -54,6 +56,7 @@ function TextInput(props: Props) {
     <>
       {error && <div className="textError b small i mt2">{error}</div>}
       <input
+        id={id}
         autoFocus={autofocus}
         type={type || "text"}
         placeholder={placeholder}
