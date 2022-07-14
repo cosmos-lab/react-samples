@@ -2,12 +2,12 @@ import "./styles/style.scss";
 import { useState } from "react";
 import { useSelector, useDispatch, connect } from "react-redux";
 import { setLogin } from "./state/Auth";
+import { addItem, fetchItems } from "./services/Product";
 
 import Button from "./components/Form/Button";
 import Header from "./views/Header";
 import Products from "./views/Products";
 import ProductForm from "./views/ProductForm";
-import { addItem, fetchItems } from "./services/Product";
 import Loading from "./components/Loading";
 
 function App(props: any) {
@@ -20,7 +20,10 @@ function App(props: any) {
   const [editing, editItem] = useState(getBlankitem());
 
   return (
-    <div className="flex flex-column h100 justify-around theme-1">
+    <div
+      className="flex flex-column h100 justify-around theme-1 mhauto"
+      style={{ maxWidth: "1024px" }}
+    >
       {!isLoggedIn && (
         <div className="tc">
           <Button
@@ -54,17 +57,22 @@ function App(props: any) {
 
             {editing.id != 0 && (
               <ProductForm
+                key={`movie-form-${editing.id}`}
                 data={editing}
                 onSave={async (item: any) => {
                   await addItem(item);
                   dispatch(fetchItems());
                   editItem(getBlankitem());
                 }}
+                onCancel={() => editItem(getBlankitem())}
                 className="bgSecondary pa4 mh4 mt3"
               />
             )}
 
-            <Products className="flex-auto ph4" />
+            <Products
+              className="flex-auto ph4"
+              onEdit={(movie: any) => editItem(movie)}
+            />
           </div>
         </>
       )}

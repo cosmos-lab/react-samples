@@ -7,7 +7,7 @@ import Form from "../components/Form/Form";
 import TextInput from "../components/Form/TextInput";
 
 function ProductForm(props: any) {
-  const { data, onSave, className } = props;
+  const { data, onSave, onCancel, className } = props;
   const [details, setDetails] = useState(data);
   const [isLoading, setLoading] = useState(false);
   return (
@@ -40,6 +40,7 @@ function ProductForm(props: any) {
       </div>
 
       <Button className="bgButtonPrimary ph3 pv2 ml4" isLoading={isLoading}>Save</Button>
+      <Button className="bgButtonSecondary ph3 pv2 ml4" onClick={()=>onCancel()}>Cancel</Button>
     </Form>
   );
 }

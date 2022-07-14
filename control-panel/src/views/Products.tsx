@@ -4,10 +4,8 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import { fetchItems } from "../services/Product";
 
-import Button from "../components/Form/Button";
-
 function Products(props: any) {
-  const { product, className, dispatch } = props;
+  const { product, onEdit, className, dispatch } = props;
 
   useEffect(() => {
     dispatch(fetchItems());
@@ -23,7 +21,9 @@ function Products(props: any) {
           >
             <div className="b heading flex-auto">{movie.name}</div>
             <div className="textSecondary pr4">{movie.year}</div>
-            <Button className="bgButtonSecondary pv1">+</Button>
+            <span className="link" onClick={() => onEdit(movie)}>
+              Edit
+            </span>
           </div>
         );
       })}
