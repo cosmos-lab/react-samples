@@ -1,0 +1,80 @@
+@use "variables.scss";
+
+$-sizes: (
+  "1": 0.25,
+  "2": 0.5,
+  "3": 0.75,
+  "4": 1,
+  "5": 2,
+  "6": 3,
+  "7": 4,
+  "8": 5,
+);
+
+$-sides: variables.$sides;
+$-unit: variables.$unit;
+
+@each $size-key, $size in $-sizes {
+  .ma#{$size-key} {
+    margin: $size + $-unit;
+  }
+
+  .mv#{$size-key} {
+    margin-top: $size + $-unit;
+    margin-bottom: $size + $-unit;
+  }
+
+  .mh#{$size-key} {
+    margin-left: $size + $-unit;
+    margin-right: $size + $-unit;
+  }
+
+  @each $side-key, $side in $-sides {
+    .m#{$side-key}#{$size-key} {
+      margin-#{$side}: $size + $-unit;
+    }
+  }
+
+  .pa#{$size-key} {
+    padding: $size + $-unit;
+  }
+
+  .pv#{$size-key} {
+    padding-top: $size + $-unit;
+    padding-bottom: $size + $-unit;
+  }
+
+  .ph#{$size-key} {
+    padding-left: $size + $-unit;
+    padding-right: $size + $-unit;
+  }
+
+  @each $side-key, $side in $-sides {
+    .p#{$side-key}#{$size-key} {
+      padding-#{$side}: $size + $-unit;
+    }
+  }
+}
+
+.mauto {
+  margin: auto;
+}
+
+.mhauto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mvauto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@for $length from 100 through 10 {
+  .h#{$length} {
+    height: $length * 1%;
+  }
+  .w#{$length} {
+    width: $length * 1%;
+  }
+}

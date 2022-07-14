@@ -1,0 +1,145 @@
+@mixin configure(
+  $theme-name,
+  $default,
+  $contrast,
+  $primary,
+  $error,
+  $secondary1,
+  $secondary2,
+  $secondary3
+) {
+  .#{$theme-name} {
+    color: $default;
+
+    .bgDefault {
+      background-color: $contrast;
+    }
+
+    .bgPrimary {
+      color: $contrast;
+      background-color: $primary;
+    }
+
+    .bgSecondary {
+      background-color: $secondary1;
+    }
+
+    .bgError {
+      background-color: $error;
+      color: $contrast;
+    }
+
+    .bgButtonPrimary {
+      @extend .bgPrimary;
+      border: 1px solid $primary;
+      &:focus {
+        @extend .focus;
+      }
+    }
+
+    .bgButtonSecondary {
+      color: $primary;
+      border: 1px solid $secondary1;
+      &:hover {
+        border-color: $default;
+        color: $default;
+      }
+      &:focus {
+        @extend .focus;
+      }
+    }
+
+    .bgHoverDefault {
+      &:hover {
+        color: $default;
+        background-color: $contrast;
+      }
+    }
+
+    .bgHoverPrimary {
+      &:hover {
+        color: $contrast;
+        background-color: $primary;
+      }
+    }
+
+    .bgHoverSecondary {
+      &:hover {
+        background-color: $secondary1;
+      }
+    }
+
+    .borderHoverPrimary {
+      &:hover {
+        border-color: $primary;
+      }
+    }
+
+    .borderSecondary {
+      border-color: $secondary2;
+    }
+
+    .borderPrimary {
+      border-color: $primary;
+    }
+
+    .borderError {
+      border-color:$error !important;
+    }
+
+    .textSecondary {
+      color: $secondary3;
+    }
+
+    .textError {
+      color: $error;
+    }
+
+    .link {
+      cursor: pointer;
+      color: $primary;
+      &:hover {
+        color: $default;
+      }
+    }
+
+    .input {
+      border: 1px solid $secondary2;
+      background-color: $contrast;
+      &:not(:read-only):focus {
+        @extend .focus;
+      }
+    }
+
+    .inputLine {
+      border-bottom: 1px solid $secondary2;
+      background-color: $contrast;
+      &:not(:read-only):focus {
+        border-bottom-color: $primary;
+      }
+    }
+
+    .focus {
+      border: 1px solid $primary;
+    }
+
+    .focusHover {
+      &:hover {
+        @extend .focus;
+      }
+    }
+
+    .boxShadow {
+      box-shadow: 1px 1px 0px 0px #dddddd;
+    }
+
+    ::placeholder {
+      color: $secondary3;
+      opacity: 1;
+    }
+
+    ::-ms-input-placeholder {
+      color: $secondary3;
+    }
+  }
+}

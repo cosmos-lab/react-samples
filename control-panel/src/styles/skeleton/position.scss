@@ -1,0 +1,37 @@
+@use "variables.scss";
+
+.static {
+  position: static;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.sticky {
+  position: sticky;
+}
+
+$-sides: variables.$sides;
+
+@each $side-key, $side in $-sides {
+  .#{$side}0 {
+    #{$side}: 0;
+  }
+}
+
+.z0 {
+  z-index: 0;
+}
+
+.zmax {
+  z-index: 2147483647;
+}
