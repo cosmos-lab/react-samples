@@ -2,8 +2,9 @@ import logo from "./static/logo.svg";
 import "./styles/style.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { setLogin } from "./state/Auth";
-import Products from "./views/Products";
+
 import Button from "./components/Form/Button";
+import Products from "./views/Products";
 import Header from "./views/Header";
 
 function App() {
@@ -27,7 +28,9 @@ function App() {
       {isLoggedIn && (
         <>
           <Header className="bb borderSecondary ph3" />
-          <Products className="flex-auto ph3" />
+          <div className="flex flex-auto">
+            <Products className="flex-auto ph3" />
+          </div>
         </>
       )}
     </div>

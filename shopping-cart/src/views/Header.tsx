@@ -2,6 +2,7 @@ import css from "classnames";
 import logo from "../static/logo.svg";
 import { connect } from "react-redux";
 import { setLogin } from "../state/Auth";
+import Counter from "../components/Counter";
 
 function Header(props: any) {
   const {
@@ -10,6 +11,7 @@ function Header(props: any) {
     dispatch
   } = props;
 
+
   return (
     <div className={css("flex-center justify-between", className)}>
       {isLoggedIn && (
@@ -17,6 +19,7 @@ function Header(props: any) {
           <div>
             <img src={logo} className="App-logo" alt="logo" height="50" />
           </div>
+          <Counter/>
           <div>
             <span>Hello, {user.name}</span>
             <span className="ml2 link" onClick={()=>dispatch(setLogin(false))}>Logout</span>

@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@types/react-redux": "^7.1.24",
+    "miragejs": "^0.1.45",
     "sass": "^1.53.0"
   }
 }
