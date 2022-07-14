@@ -2,7 +2,7 @@ import "./styles/style.scss";
 import { useState } from "react";
 import { useSelector, useDispatch, connect } from "react-redux";
 import { setLogin } from "./state/Auth";
-import { addItem, fetchItems } from "./services/Product";
+import { editItem, fetchItems } from "./services/Product";
 
 import Button from "./components/Form/Button";
 import Header from "./views/Header";
@@ -17,7 +17,8 @@ function App(props: any) {
     product,
   } = useSelector((state: any) => state);
 
-  const [editing, editItem] = useState(getBlankitem());
+  const [editing, setEditItem] = useState(getBlankitem());
+  const [isEditing, setEditing] = useState(false);
 
   return (
     <div
@@ -43,9 +44,10 @@ function App(props: any) {
               <div className="flex justify-between items-center ph4 pt3">
                 <div className="b">Movies {product.list.length}</div>
                 <Button
-                  onClick={() =>
-                    editItem({ ...getBlankitem(), id: product.list.length + 1 })
-                  }
+                  onClick={() => {
+                    setEditItem(getBlankitem());
+                    setEditing(true);
+                  }}
                   className="bgButtonPrimary ph3 pv2"
                 >
                   Add Movie +
@@ -55,23 +57,26 @@ function App(props: any) {
 
             {product.isLoading && <Loading className="mt3 mb3 pt3" count={1} />}
 
-            {editing.id != 0 && (
+            {isEditing && (
               <ProductForm
                 key={`movie-form-${editing.id}`}
                 data={editing}
                 onSave={async (item: any) => {
-                  await addItem(item);
+                  await editItem(item);
                   dispatch(fetchItems());
-                  editItem(getBlankitem());
+                  setEditing(false);
                 }}
-                onCancel={() => editItem(getBlankitem())}
+                onCancel={() => setEditing(false)}
                 className="bgSecondary pa4 mh4 mt3"
               />
             )}
 
             <Products
               className="flex-auto ph4"
-              onEdit={(movie: any) => editItem(movie)}
+              onEdit={(movie: any) => {
+                setEditItem(movie);
+                setEditing(true);
+              }}
             />
           </div>
         </>

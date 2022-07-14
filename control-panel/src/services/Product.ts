@@ -3,7 +3,7 @@ import { setProductList, setProductLoading } from "../state/Product";
 export function fetchItems() {
   return async (dispatch: any) => {
     dispatch(setProductLoading(true));
-    
+
     const response = await fetch("/api/movies");
     const json = await response.json();
 
@@ -12,7 +12,7 @@ export function fetchItems() {
   };
 }
 
-export async function addItem(data: any) {
+export async function editItem(data: any) {
   const response = await fetch("/api/movies", {
     method: "POST",
     body: JSON.stringify(data),
