@@ -10,6 +10,10 @@ import Products from "./views/Products";
 import ProductForm from "./views/ProductForm";
 import Loading from "./components/Loading";
 
+function getBlankItem() {
+  return { id: 0, name: "", year: "" };
+}
+
 function App(props: any) {
   const { dispatch } = props;
   const {
@@ -17,7 +21,7 @@ function App(props: any) {
     product,
   } = useSelector((state: any) => state);
 
-  const [editing, setEditItem] = useState(getBlankitem());
+  const [editing, setEditItem] = useState(getBlankItem());
   const [isEditing, setEditing] = useState(false);
 
   return (
@@ -45,7 +49,7 @@ function App(props: any) {
                 <div className="b">Movies {product.list.length}</div>
                 <Button
                   onClick={() => {
-                    setEditItem(getBlankitem());
+                    setEditItem(getBlankItem());
                     setEditing(true);
                   }}
                   className="bgButtonPrimary ph3 pv2"
@@ -83,10 +87,6 @@ function App(props: any) {
       )}
     </div>
   );
-}
-
-function getBlankitem() {
-  return { id: 0, name: "", year: "" };
 }
 
 const mapStateToProps = (state: any) => {
