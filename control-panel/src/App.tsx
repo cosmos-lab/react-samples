@@ -1,6 +1,6 @@
 import "./styles/style.scss";
 import { useState } from "react";
-import { useSelector, useDispatch, connect } from "react-redux";
+import { useSelector, connect } from "react-redux";
 import { setLogin } from "./state/Auth";
 import { editItem, fetchItems } from "./services/Product";
 
