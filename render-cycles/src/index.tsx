@@ -10,4 +10,6 @@ const root = ReactDOM.createRoot(
 
 root.render(<App />);
 
-reportWebVitals();
+reportWebVitals((m:any)=>{
+  console.log(m)
+});
