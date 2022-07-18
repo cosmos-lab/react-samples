@@ -1,6 +1,6 @@
 const generateData = () => {
   const list = [];
-  for (let i = 0; i < 10000; i++) {
+  for (let i = 0; i < 30000; i++) {
     list.push({
       id: `id-${i + 1}`,
       name: `Product ${i + 1}`,
