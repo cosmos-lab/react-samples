@@ -1,6 +1,17 @@
-import { useDeferredValue, useMemo, useState, useTransition } from "react";
+import {
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+  useTransition,
+} from "react";
 import List from "./components/ItemList";
 import { generateData } from "./data/data";
+
+import WorkerBuilder from "./workers/woker-builder";
+import Worker from "./workers/item-search";
+
+const instance = new WorkerBuilder(Worker);
 
 const itemList = generateData();
 
@@ -35,8 +46,23 @@ function App(props: any) {
     [filteredList]
   );
 
+  useEffect(() => {
+    instance.onmessage = (message) => {
+      if (message) {
+        console.log("Message from worker", message.data);
+      }
+    };
+  }, []);
+
   return (
     <>
+      <button
+        onClick={() => {
+          instance.postMessage(5);
+        }}
+      >
+        Send Message
+      </button>
       <input type="text" onChange={searchKeyword} />
       {isPending && <p>Searching...</p>}
       {!isPending && delayedList}
