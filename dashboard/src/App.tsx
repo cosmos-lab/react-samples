@@ -4,9 +4,6 @@ import Layout from "./components/Layout";
 import "./styles/main.scss"
 
 function App(props: any) {
-  const [label, setLabel] = useState("My Counter");
-  const [baseCount, setBaseCount] = useState(1);
-
   return (
     <>
       <Header />
